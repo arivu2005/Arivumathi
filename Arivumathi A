@@ -536,3 +536,170 @@ mydatabase> db.products.find({ price: { $gt: 100 } })
   }
 ]
 mydatabase>
+
+
+mydatabase> db.user.find({ name: /^A/ })
+
+mydatabase> db.user.find({ name: "A" })
+
+mydatabase> db.user.find({ name: A })
+ReferenceError: A is not defined
+mydatabase> db.user.find({ name: /A/ })
+
+mydatabase> db.user.find({ name: /^A/ })
+
+mydatabase> db.user.find()
+[
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140c'),
+    id: 2,
+    name: 'Bhuvana',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140d'),
+    id: 3,
+    name: 'Deepa',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140e'),
+    id: 4,
+    name: 'Divya',
+    city: 'chennai'
+  }
+]
+mydatabase> db.user.find({ name: /^D/ })
+[
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140d'),
+    id: 3,
+    name: 'Deepa',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140e'),
+    id: 4,
+    name: 'Divya',
+    city: 'chennai'
+  }
+]
+mydatabase> db.user.find({}, { name: Divya, id: 4, city: chennai })
+ReferenceError: Divya is not defined
+mydatabase> db.user.find({}, { name: "Divya", id: 4, city: "chennai" })
+[
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140c'),
+    id: 2,
+    name: 'Divya',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140d'),
+    id: 3,
+    name: 'Divya',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140e'),
+    id: 4,
+    name: 'Divya',
+    city: 'chennai'
+  }
+]
+mydatabase> db.user.find()
+[
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140c'),
+    id: 2,
+    name: 'Bhuvana',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140d'),
+    id: 3,
+    name: 'Deepa',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140e'),
+    id: 4,
+    name: 'Divya',
+    city: 'chennai'
+  }
+]
+mydatabase> db.orders.find({ status: "Pending" })
+[
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1411'),
+    o_id: 201,
+    id: 2,
+    p_id: 102,
+    qty: 2,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1413'),
+    o_id: 203,
+    id: 4,
+    p_id: 104,
+    qty: 2,
+    status: 'Pending'
+  }
+]
+mydatabase> db.user.find({}, { name: 1, id: 1 })
+[
+  { _id: ObjectId('67ee0cb27049db9a0e6b140c'), id: 2, name: 'Bhuvana' },
+  { _id: ObjectId('67ee0cb27049db9a0e6b140d'), id: 3, name: 'Deepa' },
+  { _id: ObjectId('67ee0cb27049db9a0e6b140e'), id: 4, name: 'Divya' }
+]
+mydatabase>
+
+
+mydatabase> db.products.updateMany({}, { $inc: { price: 1 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 4,
+  modifiedCount: 4,
+  upsertedCount: 0
+}
+mydatabase> db.products.find()
+[
+  {
+    _id: ObjectId('67ee13d4ca122ddf426b1418'),
+    p_id: 101,
+    p_name: 'Briyani',
+    price: 150,
+    category: 'non-veg',
+    stock: 'available'
+  },
+  {
+    _id: ObjectId('67ee13d4ca122ddf426b1419'),
+    p_id: 102,
+    p_name: 'Fried_rice',
+    price: 101,
+    category: 'non-veg',
+    stock: 'available'
+  },
+  {
+    _id: ObjectId('67ee13d4ca122ddf426b141a'),
+    p_id: 103,
+    p_name: 'Meals',
+    price: 121,
+    category: 'veg',
+    stock: 'available'
+  },
+  {
+    _id: ObjectId('67ee13d4ca122ddf426b141b'),
+    p_id: 104,
+    p_name: 'Egg_rice',
+    price: 81,
+    category: 'non-veg',
+    stock: 'available'
+  }
+]
+mydatabase>
+
+
+
