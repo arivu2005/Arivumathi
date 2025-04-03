@@ -1,0 +1,538 @@
+arivumathi@ArivumathiArul:~$ mongosh
+Current Mongosh Log ID: 67ee05457049db9a0e6b140a
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.4.2
+Using MongoDB:          8.0.6
+Using Mongosh:          2.4.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2025-04-03T03:47:25.996+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2025-04-03T03:47:26.570+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2025-04-03T03:47:26.571+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2025-04-03T03:47:26.571+00:00: We suggest setting the contents of sysfsFile to 0.
+   2025-04-03T03:47:26.571+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> use mydatabase
+switched to db mydatabase
+mydatabase> db.createCollection("user")
+{ ok: 1 }
+mydatabase> db.createCollection("product")
+{ ok: 1 }
+mydatabase> db.createCollection("orders")
+{ ok: 1 }
+mydatabase> db.createCollection("payments")
+{ ok: 1 }
+mydatabase> db.user.insertMany([{"id":1,"name":"Arivu","city":"chennai"},{"id":2,"name":"Bhuvana","city":"chennai"},{"id":3,"name":"Deepa","city":"chennai"},{"id":4,"name":"Divya","city":"chennai"}
+...
+...
+...  db.user.insertMany([{"id":1,"name":"Arivu","city":"chennai"},{"id":2,"name":"Bhuvana","city":"chennai"},{"id":3,"name":"Deepa","city":"chennai"},{"id":4,"name":"Divya","city":"chennai"}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (4:1)
+
+  2 |
+  3 |
+> 4 |  db.user.insertMany([{"id":1,"name":"Arivu","city":"chennai"},{"id":2,"name":"Bhuvana","city":"chennai"},{"id":3,"name":"Deepa","city":"chennai"},{"id":4,"name":"Divya","city":"chennai"}])
+    |  ^
+  5 |
+
+mydatabase> db.user.insertMany([{"id":1,"name":"Arivu","city":"chennai"},{"id":2,"name":"Bhuvana","city":"chennai"},{"id":3,"name":"Deepa","city":"chennai"},{"id":4,"name":"Divya","city":"chennai"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67ee0cb27049db9a0e6b140b'),
+    '1': ObjectId('67ee0cb27049db9a0e6b140c'),
+    '2': ObjectId('67ee0cb27049db9a0e6b140d'),
+    '3': ObjectId('67ee0cb27049db9a0e6b140e')
+  }
+}
+mydatabase> db.product.insertMany([{"p_id":101,"p_name":"Briyani","price":150,"category":"non-veg","stock":"available"},{"p_id":101,"p_name":"Briy
+[1]+  Stopped                 mongosh
+arivumathi@ArivumathiArul:~$
+arivumathi@ArivumathiArul:~$
+arivumathi@ArivumathiArul:~$ mydatabase> db.product.insertMany([{"p_id":101,"p_name":"Briyani","price":150,"category":"non-veg","stock":"available"},{"p_id":101,"p_name":"Briy
+[1]+  Stopped
+-bash: syntax error near unexpected token `('
+[1]+: command not found
+arivumathi@ArivumathiArul:~$ mongosh
+Current Mongosh Log ID: 67ee0e8aca122ddf426b140a
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.4.2
+Using MongoDB:          8.0.6
+Using Mongosh:          2.4.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-04-03T03:47:25.996+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2025-04-03T03:47:26.570+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2025-04-03T03:47:26.571+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2025-04-03T03:47:26.571+00:00: We suggest setting the contents of sysfsFile to 0.
+   2025-04-03T03:47:26.571+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> use mydatabase
+switched to db mydatabase
+mydatabase> db.product.insertMany([{"p_id":101,"p_name":"Briyani","price":150,"category":"non-veg","stock":"available"},{"p_id":102,"p_name":"Fried_rice","price":100,"category":"non-veg","stock":"available"},{"p_id":103,"p_name":"Meals","price":120,"category":"veg","stock":"available"},{"p_id":104,"p_name":"Egg_rice","price":80,"category":"non-veg","stock":"available"},{"p_id":105,"p_name":"Dosa","price":15,"category":"veg","stock":"available"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67ee0ff1ca122ddf426b140b'),
+    '1': ObjectId('67ee0ff1ca122ddf426b140c'),
+    '2': ObjectId('67ee0ff1ca122ddf426b140d'),
+    '3': ObjectId('67ee0ff1ca122ddf426b140e'),
+    '4': ObjectId('67ee0ff1ca122ddf426b140f')
+  }
+}
+mydatabase> db.orders.insertMany([{"o_id":200,"id":1,"p_id":101,"qty":2,"status":"Delivered"},{"o_id":201,"id":2,"p_id":102,"qty":2,"status":"Pending"},{"o_id":202,"id":3,"p_id":103,"qty":2,"status":"Delivered"},{"o_id"203,"id":4,"p_id":104,"qty":2,"status":"Pending"}])
+Uncaught:
+SyntaxError: Unexpected token (1:207)
+
+> 1 | db.orders.insertMany([{"o_id":200,"id":1,"p_id":101,"qty":2,"status":"Delivered"},{"o_id":201,"id":2,"p_id":102,"qty":2,"status":"Pending"},{"o_id":202,"id":3,"p_id":103,"qty":2,"status":"Delivered"},{"o_id"203,"id":4,"p_id":104,"qty":2,"status":"Pending"}])
+    |                                                                                                                                                                                                                ^
+  2 |
+
+mydatabase> db.orders.insertMany([{"o_id":200,"id":1,"p_id":101,"qty":2,"status":"Delivered"},{"o_id":201,"id":2,"p_id":102,"qty":2,"status":"Pending"},{"o_id":202,"id":3,"p_id":103,"qty":2,"status":"Delivered"},{"o_id":203,"id":4,"p_id":104,"qty":2,"status":"Pending"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67ee11fcca122ddf426b1410'),
+    '1': ObjectId('67ee11fcca122ddf426b1411'),
+    '2': ObjectId('67ee11fcca122ddf426b1412'),
+    '3': ObjectId('67ee11fcca122ddf426b1413')
+  }
+}
+mydatabase> db.payment.insertMany([{"pay_id":300,"o_id":200,"amount":150,"status":"paid","method":"cash"},{"pay_id":301,"o_id":201,"amount":100,"status":"unpaid","method":"UPI"},{"pay_id":302,"o_id":202,"amount":120,"status":"paid","method":"cash"},{"pay_id":303,"o_id":203,"amount":80,"status":"unpaid","metho":"UPI"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67ee138fca122ddf426b1414'),
+    '1': ObjectId('67ee138fca122ddf426b1415'),
+    '2': ObjectId('67ee138fca122ddf426b1416'),
+    '3': ObjectId('67ee138fca122ddf426b1417')
+  }
+}
+mydatabase> db.createCollection("Products")
+{ ok: 1 }
+mydatabase> db.products.insertMany([{"p_id":101,"p_name":"Briyani","price":150,"category":"non-veg","stock":"available"},{"p_id":102,"p_name":"Fried_rice","price":100,"category":"non-veg","stock":"available"},{"p_id":103,"p_name":"Meals","price":120,"category":"veg","stock":"available"},{"p_id":104,"p_name":"Egg_rice","price":80,"category":"non-veg","stock":"available"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67ee13d4ca122ddf426b1418'),
+    '1': ObjectId('67ee13d4ca122ddf426b1419'),
+    '2': ObjectId('67ee13d4ca122ddf426b141a'),
+    '3': ObjectId('67ee13d4ca122ddf426b141b')
+  }
+}
+mydatabase> db.user.find()
+[
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140b'),
+    id: 1,
+    name: 'Arivu',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140c'),
+    id: 2,
+    name: 'Bhuvana',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140d'),
+    id: 3,
+    name: 'Deepa',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140e'),
+    id: 4,
+    name: 'Divya',
+    city: 'chennai'
+  }
+]
+mydatabase> db.products.find()
+[
+  {
+    _id: ObjectId('67ee13d4ca122ddf426b1418'),
+    p_id: 101,
+    p_name: 'Briyani',
+    price: 150,
+    category: 'non-veg',
+    stock: 'available'
+  },
+  {
+    _id: ObjectId('67ee13d4ca122ddf426b1419'),
+    p_id: 102,
+    p_name: 'Fried_rice',
+    price: 100,
+    category: 'non-veg',
+    stock: 'available'
+  },
+  {
+    _id: ObjectId('67ee13d4ca122ddf426b141a'),
+    p_id: 103,
+    p_name: 'Meals',
+    price: 120,
+    category: 'veg',
+    stock: 'available'
+  },
+  {
+    _id: ObjectId('67ee13d4ca122ddf426b141b'),
+    p_id: 104,
+    p_name: 'Egg_rice',
+    price: 80,
+    category: 'non-veg',
+    stock: 'available'
+  }
+]
+mydatabase> db.orders.find()
+[
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1410'),
+    o_id: 200,
+    id: 1,
+    p_id: 101,
+    qty: 2,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1411'),
+    o_id: 201,
+    id: 2,
+    p_id: 102,
+    qty: 2,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1412'),
+    o_id: 202,
+    id: 3,
+    p_id: 103,
+    qty: 2,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1413'),
+    o_id: 203,
+    id: 4,
+    p_id: 104,
+    qty: 2,
+    status: 'Pending'
+  }
+]
+mydatabase> db.payments.find()
+
+mydatabase> db.payments.find()
+
+mydatabase> db.payment.find()
+[
+  {
+    _id: ObjectId('67ee138fca122ddf426b1414'),
+    pay_id: 300,
+    o_id: 200,
+    amount: 150,
+    status: 'paid',
+    method: 'cash'
+  },
+  {
+    _id: ObjectId('67ee138fca122ddf426b1415'),
+    pay_id: 301,
+    o_id: 201,
+    amount: 100,
+    status: 'unpaid',
+    method: 'UPI'
+  },
+  {
+    _id: ObjectId('67ee138fca122ddf426b1416'),
+    pay_id: 302,
+    o_id: 202,
+    amount: 120,
+    status: 'paid',
+    method: 'cash'
+  },
+  {
+    _id: ObjectId('67ee138fca122ddf426b1417'),
+    pay_id: 303,
+    o_id: 203,
+    amount: 80,
+    status: 'unpaid',
+    metho: 'UPI'
+  }
+]
+mydatabase>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+mydatabase> db.payments.insertMany([{"pay_id":300,"o_id":200,"amount":150,"status":"paid","method":"cash"},{"pay_id":301,"o_id":201,"amount":100,"status":"unpaid","method":"UPI"},{"pay_id":302,"o_id":202,"amount":120,"status":"paid","method":"cash"},{"pay_id":303,"o_id":203,"amount":80,"status":"unpaid","metho":"UPI"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('67ee1461ca122ddf426b141c'),
+    '1': ObjectId('67ee1461ca122ddf426b141d'),
+    '2': ObjectId('67ee1461ca122ddf426b141e'),
+    '3': ObjectId('67ee1461ca122ddf426b141f')
+  }
+}
+mydatabase> db.payments.find()
+[
+  {
+    _id: ObjectId('67ee1461ca122ddf426b141c'),
+    pay_id: 300,
+    o_id: 200,
+    amount: 150,
+    status: 'paid',
+    method: 'cash'
+  },
+  {
+    _id: ObjectId('67ee1461ca122ddf426b141d'),
+    pay_id: 301,
+    o_id: 201,
+    amount: 100,
+    status: 'unpaid',
+    method: 'UPI'
+  },
+  {
+    _id: ObjectId('67ee1461ca122ddf426b141e'),
+    pay_id: 302,
+    o_id: 202,
+    amount: 120,
+    status: 'paid',
+    method: 'cash'
+  },
+  {
+    _id: ObjectId('67ee1461ca122ddf426b141f'),
+    pay_id: 303,
+    o_id: 203,
+    amount: 80,
+    status: 'unpaid',
+    metho: 'UPI'
+  }
+]
+mydatabase> db.user.find({"city":"chennai"})
+[
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140b'),
+    id: 1,
+    name: 'Arivu',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140c'),
+    id: 2,
+    name: 'Bhuvana',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140d'),
+    id: 3,
+    name: 'Deepa',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140e'),
+    id: 4,
+    name: 'Divya',
+    city: 'chennai'
+  }
+]
+mydatabase> db.orders.find({"status":"pending"})
+
+mydatabase> db.orders.find({"status":"Pending"})
+[
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1411'),
+    o_id: 201,
+    id: 2,
+    p_id: 102,
+    qty: 2,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1413'),
+    o_id: 203,
+    id: 4,
+    p_id: 104,
+    qty: 2,
+    status: 'Pending'
+  }
+]
+mydatabase>
+
+mydatabase> db.orders.updateOne({ o_id: 200 }, { $set: { status: "Pending" } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+mydatabase> db.orders.find({"status":"Pending"})
+[
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1410'),
+    o_id: 200,
+    id: 1,
+    p_id: 101,
+    qty: 2,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1411'),
+    o_id: 201,
+    id: 2,
+    p_id: 102,
+    qty: 2,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1413'),
+    o_id: 203,
+    id: 4,
+    p_id: 104,
+    qty: 2,
+    status: 'Pending'
+  }
+]
+mydatabase>
+
+
+mydatabase> db.user.deleteOne({ id: 1 })
+{ acknowledged: true, deletedCount: 0 }
+mydatabase> db.user.find()
+[
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140c'),
+    id: 2,
+    name: 'Bhuvana',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140d'),
+    id: 3,
+    name: 'Deepa',
+    city: 'chennai'
+  },
+  {
+    _id: ObjectId('67ee0cb27049db9a0e6b140e'),
+    id: 4,
+    name: 'Divya',
+    city: 'chennai'
+  }
+]
+mydatabase> db.oders.deleteOne({ o_id: 200 })
+{ acknowledged: true, deletedCount: 0 }
+mydatabase> db.orders.find()
+[
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1410'),
+    o_id: 200,
+    id: 1,
+    p_id: 101,
+    qty: 2,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1411'),
+    o_id: 201,
+    id: 2,
+    p_id: 102,
+    qty: 2,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1412'),
+    o_id: 202,
+    id: 3,
+    p_id: 103,
+    qty: 2,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1413'),
+    o_id: 203,
+    id: 4,
+    p_id: 104,
+    qty: 2,
+    status: 'Pending'
+  }
+]
+mydatabase> db.orders.deleteOne({ o_id: 200 })
+{ acknowledged: true, deletedCount: 1 }
+mydatabase> db.orders.find()
+[
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1411'),
+    o_id: 201,
+    id: 2,
+    p_id: 102,
+    qty: 2,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1412'),
+    o_id: 202,
+    id: 3,
+    p_id: 103,
+    qty: 2,
+    status: 'Delivered'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1413'),
+    o_id: 203,
+    id: 4,
+    p_id: 104,
+    qty: 2,
+    status: 'Pending'
+  }
+]
+mydatabase> db.orders.find({ status: "Pending" })
+[
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1411'),
+    o_id: 201,
+    id: 2,
+    p_id: 102,
+    qty: 2,
+    status: 'Pending'
+  },
+  {
+    _id: ObjectId('67ee11fcca122ddf426b1413'),
+    o_id: 203,
+    id: 4,
+    p_id: 104,
+    qty: 2,
+    status: 'Pending'
+  }
+]
+mydatabase>
+
+
+
+
+
+
+mydatabase> db.products.find({ price: { $gt: 100 } })
+[
+  {
+    _id: ObjectId('67ee13d4ca122ddf426b1418'),
+    p_id: 101,
+    p_name: 'Briyani',
+    price: 149,
+    category: 'non-veg',
+    stock: 'available'
+  },
+  {
+    _id: ObjectId('67ee13d4ca122ddf426b141a'),
+    p_id: 103,
+    p_name: 'Meals',
+    price: 120,
+    category: 'veg',
+    stock: 'available'
+  }
+]
+mydatabase>
